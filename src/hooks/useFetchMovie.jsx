@@ -5,23 +5,19 @@ import { getMovieDetails } from 'services/moviesApi';
 
 export const useFetchMovie = () => {
   const [movie, setMovie] = useState(null);
-  const { id } = useParams();
-
-  console.log(useParams());
-
+  const { movieId } = useParams();
+  
   useEffect(() => {
     const fetchMovie = async () => {
       try {
-        const data = await getMovieDetails(id);
-        console.log(data);
+        const data = await getMovieDetails(movieId);
         setMovie(data);
       } catch (error) {
         console.log(error.message);
       }
     };
     fetchMovie();
-  }, [id]);
+  }, [movieId]);
 
-  console.log(movie);
   return movie;
 };
