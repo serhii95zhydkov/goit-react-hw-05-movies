@@ -7,6 +7,8 @@ import { Notify } from 'notiflix';
 
 import MoviesList from 'components/MoviesList/MoviesList';
 
+import styles from './movies.module.css';
+
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -42,8 +44,9 @@ const Movies = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <input
+          className={styles.input}
           type="text"
           name="search"
           required
@@ -51,7 +54,9 @@ const Movies = () => {
           autoFocus
           placeholder="Search movies..."
         />
-        <button type="submit">Search</button>
+        <button className={styles.button} type="submit">
+          Search
+        </button>
       </form>
       {loading && <Loader />}
       {error
