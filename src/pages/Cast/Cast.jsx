@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 
 import { getMovieCast } from 'services/moviesApi';
 
+import styles from './cast.module.css';
+
 const Cast = () => {
   const [cast, setCast] = useState([]);
   const { movieId } = useParams();
@@ -21,17 +23,19 @@ const Cast = () => {
   const baseImgUrl = 'https://image.tmdb.org/t/p/w500';
 
   const elements = cast.map(({ id, name, character, profile_path }) => (
-    <li key={id}>
+    <li key={id} className={styles.item}>
       {profile_path && (
         <img src={`${baseImgUrl}${profile_path}`} alt="profile" width="200" />
       )}
-      <p>{name}</p>
-      <p>{character}</p>
+      <p className={styles.text}>
+        <b>{name}</b>
+      </p>
+      <p className={styles.text}>{character}</p>
     </li>
   ));
   return (
     <>
-      <ul>{elements}</ul>
+      <ul className={styles.list}>{elements}</ul>
     </>
   );
 };
