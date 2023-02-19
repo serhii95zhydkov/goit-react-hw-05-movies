@@ -35,7 +35,11 @@ const Cast = () => {
   ));
   return (
     <>
-      <ul className={styles.list}>{elements}</ul>
+      <ul className={styles.list}>
+        {elements.length === 0
+          ? "We don't have any cast for this movie"
+          : elements}
+      </ul>
     </>
   );
 };
